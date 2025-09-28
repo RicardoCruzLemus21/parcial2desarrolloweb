@@ -2,7 +2,6 @@ const express = require('express');
 const { Pool } = require('pg');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
-const cors = require('cors');  // Agregado para manejar CORS
 
 dotenv.config();
 
@@ -15,7 +14,6 @@ const pool = new Pool({
 });
 
 app.use(bodyParser.json());
-app.use(cors());  // Habilita CORS para todas las rutas
 
 // Endpoint 1: POST /clientes/registrar
 app.post('/clientes/registrar', async (req, res) => {
@@ -33,7 +31,7 @@ app.post('/clientes/registrar', async (req, res) => {
     }
 });
 
-// Endpoint 2: POST /clientes/login
+// Endpoint 2: POST /clientes/login (simula login con email y telefono)
 app.post('/clientes/login', async (req, res) => {
     const { email, telefono } = req.body;
     try {
